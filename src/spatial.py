@@ -14,6 +14,9 @@ class SpatialObject:
         """ 
         return self.geometry.bounds
     
+    def intersects(self, other) -> bool:
+        return self.geometry.intersects(other.geometry)
+    
 
 class Point(SpatialObject): 
     def __init__(self, id, lon, lat, name=None, tag=None):

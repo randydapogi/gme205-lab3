@@ -36,11 +36,31 @@ from spatial import Point, Parcel
 # print("Parcel Zone:", parcel.attributes["zone"])
 
 
-# Challenge 1
-row1 = {"id": "A", "lon": 121.0, "lat": 14.6, "name": "Gate", "tag": "POI"}
-row2 = {"id": "B", "lon": 999, "lat": 14.6, "name": "Gate", "tag": "POI"}
+# # Challenge 1
+# row1 = {"id": "A", "lon": 121.0, "lat": 14.6, "name": "Gate", "tag": "POI"}
+# row2 = {"id": "B", "lon": 999, "lat": 14.6, "name": "Gate", "tag": "POI"}
 
-p1 = Point.from_dict(row1)
-print(p1)
-p2 = Point.from_dict(row2)
-print(p2)
+# p1 = Point.from_dict(row1)
+# print(p1)
+# p2 = Point.from_dict(row2)
+# print(p2)
+
+
+# Challenge 2
+point_row = {"id": "A", "lon": 121.0, "lat": 14.6, "name": "Gate", "tag": "POI"}
+point = Point.from_dict(point_row)
+print(point.as_dict())
+
+attrs = { 
+        "area": 50.0, 
+        "zone": "Residential", 
+        "is_active": True 
+    } 
+geom = Polygon([ 
+        (0, 0), 
+        (10, 0), 
+        (10, 5), 
+        (0, 5) 
+    ])
+parcel = Parcel(parcel_id=101, geometry=geom, attributes=attrs) 
+print(parcel.as_dict())

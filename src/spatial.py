@@ -35,6 +35,16 @@ class Point(SpatialObject):
     def distance_to(self, other): 
         return self.geometry.distance(other.geometry)
     
+    def as_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "tag": self.tag,
+            "geometry": self.to_tuple(),
+            "bbox": self.bbox()
+        }
+        
+    
     
     @classmethod
     def from_dict(cls, d: dict):
@@ -55,3 +65,10 @@ class Parcel(SpatialObject):
         super().__init__(geometry) 
         self.parcel_id = parcel_id 
         self.attributes = attributes
+        
+    def as_dict(self):
+        return {
+            "parcel_id": self.parcel_id,
+            "bbox": self.bbox(),
+            "attributes": self.attributes
+        }
